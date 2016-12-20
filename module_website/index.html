@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Module Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet"> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+  <script src="js/bootstrap.min.js"></script>
+   <script src="js/app.js"></script>
+  <script src="js/jq.js"></script>
+</head>
+<body ng-app="app">
+
+<div class="container">
+  <nav class="navbar navbar-default">
+    <a class="navbar-brand" href="#">Module Website<small> Web Application Development</small></a>
+  
+  </nav>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#menu1">Week 1</a></li>
+    <li><a data-toggle="tab" href="#menu2">Week 2</a></li>
+    <li><a data-toggle="tab" href="#menu3">Week 3</a></li>
+    <li><a data-toggle="tab" href="#menu4">Week 4</a></li>
+    <li><a data-toggle="tab" href="#menu5">Week 5</a></li>
+    <li><a data-toggle="tab" href="#menu6">Week 6</a></li>
+    <li><a data-toggle="tab" href="#menu7">Week 7</a></li>
+    <li><a data-toggle="tab" href="#menu8">Week 8</a></li>
+    <li><a data-toggle="tab" href="#menu9">Week 9</a></li>
+    <li><a data-toggle="tab" href="#menu10">Week 10</a></li>
+    <li><a data-toggle="tab" href="#menu11">Week 11</a></li>
+    <li><a data-toggle="tab" href="#menu12">Week 12</a></li>
+    <li><a data-toggle="tab" href="#web-project">Project</a></li>
+  </ul>
+
+  <div class="tab-content" ng-controller="ctrl">
+    <div id="home" class="tab-pane fade in active"><!--home tab content -->
+      <h3>Content Summary Table</h3>
+      <p>Find quick links to Module content below.</p>
+
+      <!--======================================================================-->
+      <!--=====================Table=========================================== -->
+      <!--=====================================================================-->
+      <table class="table table-hover table-inverse" >
+          <thead>
+            <tr>
+              <th>Week #</th>
+              <th>Lab #</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>pdf</th>
+              <th>zip</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat = "lab in weeks">
+             
+              <td>{{lab.week}}</td>
+              <td>{{lab.lab}}</td>
+              <td>{{lab.title}}</td>
+              <td>{{lab.desc}}</td>
+              <td><code>lab{{lab.lab}}.pdf</code><a href="#" data-toggle="tooltip" data-placement="top" title="View {{lab.title}} .pdf"><span data-toggle="modal" data-target="#{{lab.lab}}" class="glyphicon glyphicon-open-file"></span></a></td>
+              <td><code>{{lab.lab}}.zip</code><a href="{{lab.zip}}" data-toggle="tooltip" data-placement="top" title="Download completed lab .zip file"><span class="glyphicon glyphicon-download-alt"></span></a></td>
+           
+            </tr>
+          </tbody>
+ 
+      </table>
+      <!-- Modal s-->
+  <div ng-repeat="lab in weeks">
+  <div class="modal fade" id="{{lab.lab}}" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div   class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{lab.title}}</h4>
+        </div>
+        <div class="modal-body">
+           
+        
+          <object data="{{lab.pdf}}" type="application/pdf" width="400" height="400">
+  Your browser does not support pdfs, <a href="{{lab.pdf}}">click here to
+  download the file.</a>
+</object>
+        </div>
+        <div class="modal-footer">
+          <a href="{{lab.pdf}}" target="_blank"><button type="button" class="btn btn-info">Download</button></a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+       <!--======================================================================-->
+      <!--===============================end of table=================================== -->
+      <!--=====================================================================-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div><!--end of #home div -->
+
+    <div id="menu1" class="tab-pane fade">
+    
+      <week-one></week-one>
+    </div>
+
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <week-two></week-two>
+    </div>
+
+
+    <div id="menu3" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-three></week-three>
+    </div><!--end of menu-->
+
+    <div id="menu4" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-four></week-four>
+    </div><!--end of menu-->
+   
+    <div id="menu5" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-five></week-five>
+    </div><!--end of menu-->
+
+    <div id="menu6" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-six></week-six>
+    </div><!--end of menu-->
+    <div id="menu7" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-seven></week-seven>
+    </div><!--end of menu-->
+    <div id="menu8" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-eight></week-eight>
+    </div><!--end of menu-->
+    <div id="menu9" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-nine></week-nine>
+    </div><!--end of menu-->
+    <div id="menu10" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-ten></week-ten>
+    </div><!--end of menu-->
+    <div id="menu11" class="tab-pane fade">
+     <!-- paste templates/week3.html here -->
+     <week-eleven></week-eleven>
+    </div><!--end of menu-->
+
+     <div id="menu12" class="tab-pane fade">
+    
+     <week-twelve></week-twelve>
+    </div>
+    
+    <div id="web-project" class="tab-pane fade">
+    
+     <website-project></website-project>
+    </div>
+     
+
+
+
+
+</div><!--end of page container-->
+</body>
+</html>

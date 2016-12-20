@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+     
+        <h3>Week 2</h3>
+        <p>this is a summary of week three
+        object constructor and new key word also learned deter and async.</p>
+        <p>in the lecture we learned about testing software, jira bugzilla etc...</p>
+    </div>
+
+    <div class="row">
+            <h3>Result</h3>
+            <h4>Function Lab</h4>
+            <iframe style="width:100%; height:100%;margin:0px;border:0px" src="assets/labs/week2/w2l2//index.html"></iframe>
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>js.js</h4>
+      <div>
+      <pre>
+         function Add(){
+          var number1 = parseInt(document.getElementById("number1").value);
+          var number2 = parseInt(document.getElementById("number2").value);
+          if(number1<=10){
+          alert(number2 + number1);
+          }
+          }
+      </pre>  
+    </div> 
+
+
+    <div class="row">
+            <h3>Result</h3>
+            <h4>First Objects Lab - Literal Notation</h4>
+            <iframe style="width:100%; height:100%;margin:0px;border:0px" src="assets/labs/week2/w2l3/object-literal.html"></iframe>
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>object-literal.js</h4>
+      <div>
+      <pre>
+         var hotel= {
+  name: 'Quay',
+  rooms: 40,
+  booked: 25,
+  checkAvailabity : function(){
+    return this.rooms - this.booked;
+  }
+}
+
+var hotelName = document.getElementById("hotelName");
+hotelName.textContent = hotel.name;
+
+var rooms = document.getElementById("rooms");
+rooms.textContent = hotel.checkAvailabity();
+      </pre>  
+    </div>       
+
+         
+                 
+
+
+     
+</div><!--end of container -->
+
+
+
+

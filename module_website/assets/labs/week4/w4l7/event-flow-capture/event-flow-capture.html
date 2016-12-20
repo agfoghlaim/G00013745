@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Events - Event Bubbling and Capturing</title>
+  </head>
+  <body>
+    <div id="page">
+      <ul id="list">
+        <li id="item"><a id="link">fresh figs</a></li>
+      </ul>
+    </div>
+    <script src="js/event-flow-capture.js"></script>
+    <style type="text/css">
+    #page{
+      border: 1px solid black;
+    }
+
+    #list{
+      border: 1px solid blue;
+    }
+
+    #item{
+      border: 1px solid red;
+    }
+
+    #link{
+      border: 1px solid yellow;
+    }
+    </style>
+  </body>
+</html>

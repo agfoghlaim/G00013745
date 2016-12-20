@@ -1,0 +1,386 @@
+
+
+ /*=====================================================*/
+/*===========OVERALL CSS=============================== */
+  /*===================================================*/
+
+/*nav bar */
+  .affix {
+      top: 0;
+      width: 100%;
+       z-index: 1001;
+       
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+
+ .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+  /*gift in navbar*/  
+  #about{
+    background-color: black;
+    border-radius: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+
+  }
+
+  .noGlow{
+    background-color: black;
+    border-radius: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+
+  }
+
+  .glow{
+    background-color: black;
+    border-radius: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    box-shadow: "0px 0px 15px 5px rgba(255, 255, 190, .75)"; 
+    color: #FFD34E;
+
+  }
+  .glyphicon-shopping-cart{
+    font-size: 25px;
+  }
+
+   body{
+      font-family: 'Roboto', sans-serif;
+    }
+
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #dadada;
+      padding: 50px;
+      margin-top: 100px;
+    }
+ /* Welcome username banner on all pages */
+  .status{
+padding-left:15px;
+padding-top: 10px;
+background-color: #FFFAD5;
+margin-bottom: 20px;
+}
+    
+/*==================================================*/
+/*===========jumbotron============================ */
+/*=================================================*/
+    .jumbotron{
+      margin-bottom: 0;
+      background: url('../img/banner.jpg');
+
+    }
+
+   #sale-ribbon{
+    width: 30%;
+    margin-left: 35%;
+   }
+ 
+
+  .jumbo-font{
+    	
+    font-family: 'Roboto Mono', monospace;
+    }
+
+
+
+/*==================================================*/
+/*===========shop page ============================ */
+/*=================================================*/
+  /*plus one add to cart on panel*/
+ 
+
+  /*smooth scroll row on top of shop page*/
+
+  .img-responsive:hover{
+
+  -webkit-transform:scale(1.25); /* Safari and Chrome */
+    -moz-transform:scale(1.25); /* Firefox */
+    -ms-transform:scale(1.25); /* IE 9 */
+    -o-transform:scale(1.25); /* Opera */
+     transform:scale(1.25);
+   
+}
+
+
+
+div.col-sm-2{
+	
+	float: left;
+	transition:height .4s;
+	background-color: white;
+
+}
+
+img.icon{
+  display: block;
+  width: 200px;
+  margin: 10px auto;
+  padding: 20px;
+  
+}
+img.icon:hover{
+width: 210px; 
+}
+p.label{
+  font-size: 1.1em;
+  color: black;
+  text-align: center;
+  opacity: .6;
+  padding-top: 10px;
+  transition:padding-top: .4s;
+
+
+}
+
+
+
+div.col-sm-2:hover p.label{
+  padding-top: 30px;
+  opacity: 1;
+  
+}
+
+div.col-sm-2:hover img.icon{
+  box-shadow: 0px 0px 0px 0px rgba(100,100,100, .7);
+}
+
+.price{
+ background-color: #735245 ;
+ color: #fff;
+ font-size: 14px;
+   border-radius: 50%;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   font-weight: 200;
+   height: 70px;
+   line-height: 70px;
+   text-align: center;
+   width: 70px;
+ position: absolute;
+ top: -10px;
+ right: 20px;
+ z-index: 1000;/*so still visible on img hover*/
+}
+
+.item-counter-minus{
+  background: #105B63 ;
+ color: #fff;
+ cursor: pointer;
+ position:absolute;
+ font-size: 10px;
+   line-height: 50px;
+   min-width: 50px;
+   height: 50px;
+   border-radius: 50%;
+ margin: 0 -30px 0 40px;
+   text-align: center;
+   font-weight: 200;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   transition: background 500ms;
+   right:50px;
+   bottom:90px;
+}
+
+.item-counter{
+  background: #105B63 ;
+ color: #fff;
+ cursor: pointer;
+ position:absolute;
+ font-size: 10px;
+   line-height: 50px;
+   min-width: 50px;
+   height: 50px;
+   border-radius: 50%;
+ margin: 0 -30px 0 40px;
+   text-align: center;
+   font-weight: 200;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+   transition: background 500ms;
+   right:50px;
+   bottom:145px;
+}
+
+
+
+
+.item-counter:hover {
+ color: #333 ;
+   background: #DB9E36;
+   transition: background 500ms;
+}
+
+.item-counter-minus:hover {
+ color: #333 ;
+   background: #BD4932;
+   transition: background 500ms;
+}
+
+
+
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #FFFAD5;
+    color: black;
+    border-color: #FFFAD5;
+
+}
+.panel-info{
+  border-color: #FFFAD5;
+}
+.panel-footer{
+  background-color: #FFFAD5;
+}
+
+
+/*==================================================*/
+/*===========cart page ============================ */
+/*=================================================*/
+
+#emptyCart{
+  visibility: hidden;
+}
+#emptyLink{
+ visibility: hidden; 
+
+   
+text-align: center;
+}
+
+
+
+
+/* forms==========================*/
+.form-control {
+    margin-bottom: 10px;
+}
+
+
+/*/*.ribbon {
+ font-size: 16px !important;
+
+
+ width: 50%;
+    
+ position: relative;
+ background: #ba89b6;
+ color: white;
+ text-align: center;
+ padding: 1em 2em; /* Adjust to suit 
+ margin: 2em auto 3em; 
+}
+.ribbon:before, .ribbon:after {
+ content: "";
+ position: absolute;
+ display: block;
+ bottom: -1em;
+ border: 1.5em solid #986794;
+ z-index: -1;
+}
+.ribbon:before {
+ left: -2em;
+ border-right-width: 1.5em;
+ border-left-color: transparent;
+}
+.ribbon:after {
+ right: -2em;
+ border-left-width: 1.5em;
+ border-right-color: transparent;
+}
+.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+ content: "";
+ position: absolute;
+ display: block;
+ border-style: solid;
+ border-color: #804f7c transparent transparent transparent;
+ bottom: -1em;
+}
+.ribbon .ribbon-content:before {
+ left: 0;
+ border-width: 1em 0 0 1em;
+}
+.ribbon .ribbon-content:after {
+ right: 0;
+ border-width: 1em 1em 0 0;
+}*/
+
+/* round price sticker*/
+
+/*login status welcome banner */
+
+  #angular-shop{
+    margin-top: 70px;
+  }
+
+  /*cart page - allign links properly*/
+  div.col-xs-6:nth-child(2){
+    text-align: right;
+
+  }
+
+  #emptyCart{
+    text-align: center;
+  }
+
+/*shop page- ribbon on panels*/
+#exp-sale{
+ padding-top: 0px;
+ margin-top: 0px;
+}
+#exp-sale-h6{
+  margin-bottom: 0px;
+}
+  .exp {
+    text-align: center;
+    position: relative;
+    color: #fff;    
+    margin: 0 -30px 30px -30px;
+    padding: 10px 0; 
+    text-shadow: 0 1px rgba(0,0,0,.8);
+    background-color: #BD4932;
+    background-image:  linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,0));
+    -moz-box-shadow: 0 2px 0 rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 2px 0 rgba(0,0,0,.3);
+    box-shadow: 0 2px 0 rgba(0,0,0,.3);
+}
+
+.exp:before, 
+.exp:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-color: transparent;
+    bottom: -10px;
+}
+
+.exp:before {
+    border-width: 0 10px 10px 0;
+    border-right-color: #222;
+    left: 0;
+}
+
+.exp:after {
+    border-width: 0 0 10px 10px;
+    border-left-color: #222;
+    right: 0;
+}
+
+
+/*==================================================*/
+/*==========checkout page============================ */
+/*=================================================*/
+
+#checkout-form{
+  margin-bottom: 50px;
+}

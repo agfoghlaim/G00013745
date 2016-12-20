@@ -1,0 +1,224 @@
+ <div class="row">
+      <h3>Week 9</h3>
+      <p>Assessment 2. There were 3 questions.</p>
+     
+  </div>
+
+  <div class="row">
+            <h1>Question 1</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;/border:1px solid #8d1236;" src="assets/labs/week9/q1/index.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>q1js.js</h4>
+      <div>
+      <pre>
+
+//function to help creating table
+function makeStuff(name, id, content, appendTo){
+  var el;
+  if(name){
+  el = document.createElement(name);
+  }
+  if(id){
+    el.setAttribute('id', id);
+  }
+   if(content){
+    el.appendChild(document.createTextNode(content));
+  }
+   if(appendTo){
+     document.getElementById(appendTo).appendChild(el);
+  }
+  
+}
+
+//request
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'data/league_table.json', true);
+xhr.send();
+
+//deal with response
+xhr.onload = function(){
+
+  var response = JSON.parse(xhr.responseText);
+  //console.log(response.standing[0].Team );
+  
+  //console.log(response.standing[0].Team);
+  var rowCounter = 0;
+  //make table heading
+  makeStuff('table','table', false, 'content' );
+  makeStuff('tr', 'trHead', false, 'table');
+  makeStuff('th', false, 'Pos', 'trHead');
+  makeStuff('th', false, 'Team', 'trHead');
+  makeStuff('th', false, 'P', 'trHead');
+  makeStuff('th', false, 'Pts', 'trHead');
+  makeStuff('th', false, 'F', 'trHead');
+  makeStuff('th', false, 'A', 'trHead');
+  makeStuff('th', false, 'GD', 'trHead');
+  makeStuff('th', false, 'W', 'trHead');
+  makeStuff('th', false, 'D', 'trHead');
+  makeStuff('th', false, 'L', 'trHead');
+
+  //make table
+  for(i=0;i< response.standing.length;i++){//20 times
+    //make a row and append to table
+  makeStuff('tr', 'tr'+rowCounter, false, 'table');
+  // make tds
+  makeStuff('td', false, response.standing[i].Pos, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].Team, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].P, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].Pts, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].F, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].A, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].GD, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].W, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].D, 'tr'+rowCounter);
+  makeStuff('td', false, response.standing[i].L, 'tr'+rowCounter);
+  rowCounter ++;
+  
+
+  }
+}
+
+      </pre>  
+    </div>
+
+ <div class="row">
+            <h1>Question 2</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;/border:1px solid #8d1236;" src="assets/labs/week9/q2/index.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>q2js.js</h4>
+      <div>
+      <pre>
+
+//function to help creating table
+function makeStuff(name, id, content, appendTo){
+  var el;
+  if(name){
+  el = document.createElement(name);
+  }
+  if(id){
+    el.setAttribute('id', id);
+  }
+   if(content){
+    el.appendChild(document.createTextNode(content));
+  }
+   if(appendTo){
+     document.getElementById(appendTo).appendChild(el);
+  }
+  
+}
+
+$(document).ready(function(){
+  var $newContent = '';
+  $.ajax({
+    type: 'GET', 
+    url: 'data/league_table.json',
+    dataType: 'json',
+    success: function(response){
+      
+
+      var rowCounter = 0;
+      makeStuff('table','table', false, 'content' );
+      makeStuff('tr', 'trHead', false, 'table');
+      makeStuff('th', false, 'Pos', 'trHead');
+      makeStuff('th', false, 'Team', 'trHead');
+      makeStuff('th', false, 'P', 'trHead');
+      makeStuff('th', false, 'Pts', 'trHead');
+      makeStuff('th', false, 'F', 'trHead');
+      makeStuff('th', false, 'A', 'trHead');
+      makeStuff('th', false, 'GD', 'trHead');
+      makeStuff('th', false, 'W', 'trHead');
+      makeStuff('th', false, 'D', 'trHead');
+      makeStuff('th', false, 'L', 'trHead');
+      for(i=0;i< response.standing.length;i++){//20 times
+        //make a row and append to table
+      makeStuff('tr', 'tr'+rowCounter, false, 'table');
+      makeStuff('td', false, response.standing[i].Pos, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].Team, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].P, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].Pts, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].F, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].A, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].GD, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].W, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].D, 'tr'+rowCounter);
+      makeStuff('td', false, response.standing[i].L, 'tr'+rowCounter);
+      rowCounter ++;
+
+      }
+    },
+    error: function(){
+
+    }
+  });
+});
+
+function makeStuff(name, id, content, appendTo){
+  var el;
+  if(name){
+  el = document.createElement(name);
+  }
+  if(id){
+    el.setAttribute('id', id);
+  }
+   if(content){
+    el.appendChild(document.createTextNode(content));
+  }
+   if(appendTo){
+     document.getElementById(appendTo).appendChild(el);
+  }
+  
+}
+
+
+
+      </pre>  
+    </div>
+
+ <div class="row">
+            <h1>Question 3</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;/border:1px solid #8d1236;" src="assets/labs/week9/q3/index.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>q3js.js</h4>
+      <div>
+      <pre>
+
+$(document).ready(function(){
+  
+  
+    $.ajax({
+        url: "https://rawgit.com/obrienke1/web_application_development/master/jsonp.js", //jQuery adds 'callback='
+        jsonpCallback: 'showSeasons',
+        dataType: "jsonp",
+      success: function( response ) {
+            //console.log( response ); // server response
+            var $newContent = '';
+            $newContent += '< h2>Seasons</ h2>';
+            $newContent += '< ul>';
+            for(i =0;i< response.seasons.length;i++){
+            $newContent += '< li>< a href=\"#\">' + response.seasons[i].season + '</  a></  li>'; 
+            }
+            $newContent += '</  ul>';  
+            $('#content').html($newContent);
+        }
+    });
+ })
+
+
+
+      </pre>  
+    </div>

@@ -1,0 +1,36 @@
+body{
+	background-color: green;
+}
+
+div{
+	background-color: lightblue;
+	width: 400px;
+	height: 220px;
+	margin-top: 50px;
+	margin-left: 50px;
+
+}
+
+h3{
+	font-family: sans-serif;
+	text-align: center;
+	height: 10px;
+
+}
+
+form{
+	position: absolute;
+	background-color: cyan;
+	width: 300px;
+	height: 150px;
+	margin-top: 0px;
+	margin-left: 50px;
+}
+
+button{
+	margin: 0 auto;
+	font-family: sans-serif;
+	text-align: center;
+	font-weight: bold;
+	display: block;
+}

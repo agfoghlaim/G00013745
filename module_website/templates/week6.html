@@ -1,0 +1,191 @@
+<div class="row">
+
+              <h3>Week 5</h3>
+              <p>Assessment 1.</p>
+              <p>There were 2 questions, question 1 on exception handling in javaScript. Question 2 involved event listeners, objects and propogating pages through javascript.</p>
+</div>
+
+ 
+
+  <div class="row">
+            <h1>Ouestion1 </h1>
+            
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>error.js</h4>
+      <div>
+      <pre>
+ try{
+  var num = 2.9999;
+
+document.writeln(num.toFixed(25));
+}
+catch(e){
+  
+}
+finally{
+  document.writeln(num.toFixed(20));
+}
+
+      </pre>  
+    </div>
+
+ <div class="row">
+    <h1>Question 2</h1>
+    <h3>Result - addNames.html</h3>
+    <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week6/Q2/addNames.html"></iframe>
+    <h3>Result - nameList.html</h3>
+    <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week6/Q2/nameList.html"></iframe>
+  </div>
+
+
+  <div class="row">
+      <h3>Code</h3>
+      <h4>addNames.js</h4>
+      <div>
+      <pre>
+//create functions for add(), clear_storage() and names object
+//add function to use localStorage object.
+function clear_storage(){
+  localStorage.clear();
+}
+
+function name(firstName, lastName){
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.name = firstName+" " +lastName;
+}
+
+
+function add(){
+//alert(localStorage.length);
+var obj_key = 'obj_key_' + localStorage.length; //for uniqueness
+
+
+
+var getFirstName = document.getElementById('fld1');
+var getLastName = document.getElementById('fld2');
+var fullName = getFirstName + " " + getLastName;
+
+localStorage.setItem(obj_key, JSON.stringify(new name(getFirstName.value, getLastName.value)));
+//alert(localStorage.getItem("obj_key_0"));
+
+window.location.reload(); //relaods form to clear input field
+}
+
+
+
+ </pre>  
+    </div>
+
+ <div class="row">
+      <h3>Code</h3>
+      <h4>clickEvent.js</h4>
+      <div>
+      <pre>
+var div = document.getElementById('nameList');
+div.addEventListener('click', function(e){
+  removeItem(e);
+}, false);
+
+function removeItem(e){
+  var target = e.target;
+  var theTable = div.firstElementChild;
+  var toGo;
+      if(target.nodeName === 'TD'){
+        toGo =target.parentNode.rowIndex;
+      }
+      else if(target.nodeName === 'B'){
+        var bold = target.parentNode;
+       toGo = bold.parentNode.rowIndex;
+      }else{
+      toGo = -1;
+     }
+   theTable.deleteRow(toGo);
+}
+
+
+
+
+
+
+ </pre>  
+    </div>  
+
+ <div class="row">
+      <h3>Code</h3>
+      <h4>nameList.js</h4>
+      <div>
+      <pre>
+function populate_page() {
+//Add code here to complete exercise to create the table and add it to div element on the page
+//document.write("< h1>test</ h1>");
+
+var toWrite = "< table border='1px solid black' id='t1'>< tr>< td>First Name</ td>< td>Surname</ td>< tr>";
+var div = document.getElementById('nameList');
+//var table = document.createElement('table');
+var theTableContent="";
+
+var table = document.getElementById('t1');
+var alsoWrite = "";
+//var key;
+
+for(var i=0;i< localStorage.length;i++){
+  var x = JSON.parse( localStorage.getItem("obj_key_" + i));
+  //key = "obj_key_" + i;
+if(i=== 0){
+  alsoWrite += "< tr >< td>< b>" + x.firstName + "</ b></ td>< td>< b>" + x.lastName + "</ b ></ td></ tr>";
+}else{
+  var x = JSON.parse(localStorage.getItem("obj_key_" + i));
+  alsoWrite += "< tr>< td>" + x.firstName + "</ td>< td>" + x.lastName + "</ td></ tr>";
+}
+  }
+ 
+theTableContent = toWrite + alsoWrite;
+
+div.innerHTML = theTableContent;
+
+
+  
+  
+
+
+
+  //added the following to create a reference to js/clickEvent.js within < head> tag.
+  var clickEventRef=document.createElement('script');
+  clickEventRef.setAttribute("type","text/javascript");
+  clickEventRef.setAttribute("src","js/clickEvent.js");
+  document.getElementsByTagName("head")[0].appendChild(clickEventRef);
+}
+
+var nameList = document.getElementById('namesListBody');
+
+nameList.addEventListener('load',populate_page(),false);
+
+
+
+
+
+ </pre>  
+    </div>
+
+ <div class="row">
+      <h3>Code</h3>
+      <h4>removeItem.js</h4>
+      <div>
+      <pre>
+var tableEl = document.get ElemetById("t1");
+tableE1.addEventListener('click', removeItem, true);
+
+function removeItem(){
+  var tdEl = event.target.parentNod
+}
+
+
+
+
+
+ </pre>  
+    </div>    

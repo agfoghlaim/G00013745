@@ -1,0 +1,15 @@
+
+ iframe{
+ 	border:1px solid #8d1236 !important;}
+
+.glyphicon{
+	color: #efecca;
+}
+
+.close{
+	color: #072933;
+}
+
+h1,h2,h3,h4,h5,h6, .navbar-brand{
+	font-family: 'Slabo 27px', serif;
+}

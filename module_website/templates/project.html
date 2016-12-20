@@ -1,0 +1,62 @@
+<div class="row">
+      <h3>Final Project - Dynamic Website</h3>
+
+      <p><a href="project/login.php">see it here</a></p>
+</div>
+<div class="row">      
+     
+      <h3>Installation Instructions and Information</h3>
+
+	<h4>Core Requirements<h4>
+		<ol>
+			<li>Login and Register - found in <code>module_website/project/login.php and register.php.</code></li><br>
+			<li>Upon logging in, user is taken to <code>shop.php</code>. </li><br>
+			<li>Here they can add products to cart and use cart icon in the navigation bar to navigate to cart.php. The code behind shop.php can be found in <code>js/angular.js</code>.</li><br>
+			<li> <code>cart.php</code> contains a dynamically created table which includes product details (as retrieved from local storage), product total and cart total. See <code>js/listen.js</code>.</li><br>
+			<li> <code>cart.php</code> consists of an event listener on the < div> which contains the dynamic table. See <code>js/listen.js</code> line 58.</li><br>
+			<li> clicking on an item in the cart table decreases the 'amount in cart' by one if there is more than one of that item in the cart. (see <code>js/listen.js</code> line 32)
+   Otherwise, the row is deleted.
+   When there are no items in the cart, the table disappears and is replaced with another 'back to shop' option. See <code>js/listen.js</code>.</li><br>
+			<li><code>cart.php</code> also contains a 'back to shop' and 'proceed to checkout' link. Here the user is asked to enter their address before payment confirmation. The address is added to the users table in the database in <code>address.php</code>. </li><br>
+			<li> after user confirms shipping address, they are brought to <code>checkout.php</code> which contains a form for credit card validation. See <code>js/validation.js</code>.</li><br>
+			<li> The 'confirm' button in checkout.php calls a function in <code>js/validation.js</code> which validates the card. If card is validated, order details are sent to <code>pretend.php</code>.
+	where a unique customer confirmation number is created and the order and user_id of the logged-in user is inserted into the orders table in the database. 
+	A confirmation message containing the confirmation number and the product details are then displayed on the checkout page.</li><br>
+		</ol><br>
+			
+
+		
+    <h4>Install instructions<h4>
+		<p>Download files to xampp/htdocs (or equivilent). Use phpMyAdmin to create new database named saucepan_city and import script located at <code>module_website/assets/labs/project/saucepan_city.sql</code>.</p>
+
+
+	<h4>Database Details</h4>
+	<p>database name: saucepan_city</p>
+	<p>Table 1: `orders` has the following columns - order_id(pk), user_id, product, cost(not used), cust_confirm.</p>
+
+	<p>Table 2: `users` has the following columns -   `user_id`(pk),`firstname`,`lastname`, `username`, `password, `street`, `town`, `county`, `country`</p>
+
+	<p>The <code>saucepan_city.sql</code> script to create the database can be found in <code>module_website/assets/labs/project</code></p>
+
+	<p>The .sql script includes sample data, username tom_hanks with encrypted password 'big' who has placed one order on the site.</p>
+
+	<p>The database access file is located in <code>project/core/mysqli_connect.php</code></p>
+</div>
+
+
+
+
+
+
+
+<h4>Other Information</h4>
+
+<p>THe logout button in the nav-bar links to <code>end-session.php</code>. It also calls an function in <code>js/jq.js</code>in which clears local storage.</p>
+
+
+
+
+
+
+
+      

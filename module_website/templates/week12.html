@@ -1,0 +1,265 @@
+ <div class="row">
+      <h3>Week 12</h3>
+      <p>Logging in system, sessions and cookies using php.</p>
+     
+  </div>
+
+   <div class="row">
+            <h1>User Login</h1>
+            <h3>Result - login.php</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week12/w12l23//login.php"></iframe>
+            <h3>Result - register.php</h3>
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week12/w12l23//register.php"></iframe>
+             <h3>Result - shop.php</h3>
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week12/w12l23//shop.php"></iframe>
+           
+    </div>
+
+  
+    </div>
+    <div class="row">
+    
+      <h3>Code</h3>
+      <h4>login.php</h4>
+      <div>
+      <pre>
+
+ # login.php
+// This is a login page
+
+$page_title = 'Login';
+include ('includes/header.html');
+
+// Check for form submission:
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  if(isset($_POST['register'])){
+    
+    header( "Location: register.php" );
+    exit();
+  }
+
+  //connect to the database - hint: require
+  require('mysqli_connect.php');    
+  //perform validation ensuring all form fields contain values  
+  if(!empty($_POST['username']) && !empty($_POST['pass'])){
+
+  $user=$_POST['username'];
+  $passw=$_POST['pass'];
+  $q = "SELECT user_id FROM users WHERE (username='$user' AND password=SHA1('$passw') )";
+  $r = $r = @mysqli_query ($dbc, $q);
+
+  }
+
+  if($r){
+    $num = @mysqli_num_rows($r);
+      if($num == 1){
+        echo '< p>ok</ p>';
+         header( "Location: shop.php" );
+         mysqli_close($dbc);
+            exit();
+        //close db connection
+    }else{
+      echo '< h1>Error!</ h1>
+      < p class="error">The username and password do not match those on file.</ p>';
+    }
+  }
+    
+} // End of the main Submit conditional.
+
+include ('includes/footer.html'); 
+
+
+      </pre>  
+    </div>
+
+    <div class="row">
+    
+      <h3>Code</h3>
+      <h4>register.php</h4>
+      <div>
+      <pre>
+echo 'Register here';
+       </pre>  
+    </div>
+
+      <div class="row">
+     
+      <h3>Code</h3>
+      <h4>shop.php</h4>
+      <div>
+      <pre>
+echo 'Shop here';
+       </pre>  
+    </div>
+
+       <div class="row">
+     
+      <h3>Code</h3>
+      <h4>mysqli_connect.php</h4>
+      <div>
+      <pre>
+DEFINE ('DB_USER', 'root');
+DEFINE ('DB_PASSWORD', '');
+DEFINE ('DB_HOST', 'localhost');
+DEFINE ('DB_NAME', 'web_apps');
+
+// Make the connection:
+$dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) OR die ('Could not connect to MySQL: ' . mysqli_connect_error() );
+
+// Set the encoding...
+mysqli_set_charset($dbc, 'utf8');
+       </pre>  
+    </div>
+
+
+ <div class="row">
+            <h1>Sessions</h1>
+            <h3>Result - storage.php</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week12/w12l24/sessions/storage.php"></iframe>
+            <h3>Result - welcome.php</h3>
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week12/w12l24/sessions/welcome.php"></iframe>
+      
+           
+    </div>
+
+  
+    </div>
+    <div class="row">
+      
+      <h3>Code</h3>
+      <h4>storage.php</h4>
+      <div>
+      <pre>
+
+<!DOCTYPE html>
+< html>
+< head>
+  < title>Sessions</ title> 
+</ head>
+< body>
+ (open php)
+  if(isset($_POST["add"])){
+    if(isset($_POST['username'])){
+      /* start the session. 
+      Must always be included for each page requiring so it can access the session */
+      session_start(); 
+      $_SESSION['username'] = $_POST['username']; // Add data to the session
+    }
+  }
+  if(isset($_POST["clear"])){
+    session_start(); // start the session
+    $_SESSION = array(); //reset the session array to clear the data from any variables
+    session_destroy(); // then delete the session data from the server
+  }
+  ?>
+  
+  < form action="storage.php" method="post">
+    < input type="text" name="username">
+    < input type="submit" name="add" value="Add to session">
+    < input type="submit" name="clear" value="Clear session">
+  </ form>
+ <  br>
+  <  form action="welcome.php">
+    <  input type="submit" name="welcome" value="Go to welcome page">
+  </  orm>
+  
+</ body>
+</ html>
+
+
+
+
+      </pre>  
+    </div>
+
+ <div class="row">
+            <h1>Cookies</h1>
+            <h3>Result - storage.php</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week12/w12l24/cookies/storage.php"></iframe>
+            <h3>Result - welcome.php</h3>
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week12/w12l24/cookies/welcome.php"></iframe>
+      
+           
+    </div>
+
+  
+    </div>
+    <div class="row">
+      
+      <h3>Code</h3>
+      <h4>storage.php</h4>
+      <div>
+      <pre>
+
+< !DOCTYPE html>
+< html>
+< head>
+  < title>Cookies</ title>  
+</ head>
+< body>
+ 
+  if(isset($_POST["add"])){
+    if(isset($_POST['username'])){
+      // add username from a form. Cookie expires in 1 hour (3600 seconds)
+      setcookie("username",$_POST['username'], time()+3600); 
+    }
+  }
+  if(isset($_POST["clear"])){
+    unset($_COOKIE["username"]);
+    setcookie("username","x",time()-1);
+    /*unset the cookie, just unsets it for the current request so its not available. 
+    Need to expire it, to destroy it - setcookie method needed. Any valaue will do - used x in this example*/
+  }
+  ?>
+  
+  < form action="storage.php" method="post">
+    < input type="text" name="username">
+    < input type="submit" name="add" value="Add to cookie">
+    < input type="submit" name="clear" value="Clear Cookie">
+  </ form>
+  < br>
+  < form action="welcome.php">
+    < input type="submit" name="welcome" value="Go to welcome page">
+  </ form>
+  
+</ body>
+</ html>
+  
+
+
+
+
+
+      </pre>  
+    </div>
+
+
+      <h3>Code</h3>
+      <h4>welcome.php</h4>
+      <div>
+      <pre>
+
+  //On loading the page, check if cookie has a value
+  if(isset($_COOKIE["username"])){
+    echo 'Welcome ' . $_COOKIE["username"];
+  }else{
+    echo 'Not sure who you are ?';
+  }
+  
+  echo '< form action="storage.php" method="post">';
+  echo '< input type="submit" name="home" value="Home">';
+  echo '</ form>';
+?>
+
+  
+
+
+
+
+
+      </pre>  
+    </div>

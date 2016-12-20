@@ -1,0 +1,232 @@
+ <div class="row">
+
+              <h3>Week 5</h3>
+              <p>There was a create page using document write exercise.</p>
+              <p>Also 2 more exercises on Events in javaScript and the localStorage Object.</p>
+</div>
+
+ 
+
+  <div class="row">
+            <h1>Event Delegation</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week5/w5l8/event-delegation/event-delegation.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>event-delegation.js</h4>
+      <div>
+      <pre>
+function itemRemove(event){
+//var element;
+
+
+var target = event.target;
+console.log(target);
+var elListItem = target.parentNode;
+console.log(elListItem);
+var elList = elListItem.parentNode;
+console.log(elList);
+elList.removeChild(elListItem);
+e.preventDefault();
+
+
+//element = event.target || event.srcElement;
+
+}
+
+var elShoppingList = document.getElementById("shoppingList");
+
+elShoppingList.addEventListener('click', function(event){
+    //call remove Item here
+    itemRemove(event);
+  }, false);
+
+      </pre>  
+    </div>
+
+
+  <div class="row">
+            <h1>Event Lisnener with Event Object</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week5/w5l8/event-listener-with-event-object/event-listener-with-event-object.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>event-listener-with-event-object.js</h4>
+      <div>
+      <pre>
+
+
+
+function checkLength(e, minLength) {         // Declare function
+  var el, elMsg;                             // Declare variables
+  if (!e) {                                  // If event object doesn't exist
+    e = window.event;                        // Use IE fallback
+  }
+  el = e.target || e.srcElement;             // Get target of event, which is < input type= text  id= username >
+  console.log(e.target);
+  elMsg = el.nextSibling;                    // Get its next sibling (< div id ="feedback">Username must be 5 characters or more< div) -- see other siblings, parent, child at http://www.w3schools.com/jsref/prop_node_nextsibling.asp and related pages 
+  console.log(el.nextSibling);  
+  if (el.value.length < minLength) {         // If length is too short set msg
+    elMsg.innerHTML = 'Username must be ' + minLength + ' characters or more';
+  } else {                                   // Otherwise
+    elMsg.innerHTML = '';                    // Clear message
+  }
+}
+
+var elUsername = document.getElementById('username');// Get username input
+if (elUsername.addEventListener) {           // If event listener supported
+  elUsername.addEventListener('blur', function(e) {  // On blur event
+    // NOTE: This function is checkLength() - not checkUsername()
+    checkLength(e, 5);                             // Call checkLength()
+  }, false);                                       // Capture in bubble phase
+} else {                                           // Otherwise
+  elUsername.attachEvent('onblur', function(e) {   // IE fallback onblur
+    // NOTE: This function is checkLength() - not checkUsername()
+    checkLength(e, 5);                             // Call checkLength()
+  });
+}
+
+      </pre>  
+    </div>
+
+
+  <div class="row">
+            <h1>Create Page</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week5/create_page/documentWrite.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>documentWrite.js</h4>
+      <div>
+      <pre>
+       
+var name = "Marie";
+document.write("< h1>Create Page From javaScript</ h1>");
+document.write("< p>This is a paragraph written by</ p >" + "< h1>" + name + "</ h1>");
+document.write("< button>Add</ button>");
+
+var button1 = document.getElementsByTagName("button");
+function add(){
+  alert("hiya!");
+}
+button1[0].addEventListener('click', function(){
+  add();
+}, false)
+
+
+
+      </pre>  
+    </div>
+
+  <div class="row">
+            <h1>Session Storage</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week5/web_storage/w5l9/sessionStorage/local_storage.html"></iframe>
+             <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week5/web_storage/w5l9/sessionStorage/submit.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>local_storage.js</h4>
+      <div>
+      <pre>
+
+// add javascript code here for web storage lab exercise
+
+function book(name){
+  this.name = name;
+
+}
+
+function add(){
+  var obj_key = 'obj_key_' + sessionStorage.length; //for uniqueness
+
+console.log(obj_key);
+
+
+
+sessionStorage.setItem(obj_key, JSON.stringify(new book(document.book_form.bookName.value)));
+console.log(document.book_form.bookName.value);
+
+window.location.reload(); //relaods form to clear input field
+}
+
+
+
+function clear_storage(){
+  sessionStorage.clear();
+ }
+
+
+function fromStorage(){
+for(i=0;i< sessionStorage.length;i++){
+  var x = JSON.parse(sessionStorage.getItem("obj_key_" + i));
+  alert(x.name);
+  }
+ }
+
+      </pre>  
+    </div>
+
+
+  <div class="row">
+            <h1>Local Storage</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week5/web_storage/w5l9/localStorage/local_storage.html"></iframe>
+             <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week5/web_storage/w5l9/localStorage/submit.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>local_storage.js</h4>
+      <div>
+      <pre>
+
+// add javascript code here for web storage lab exercise
+
+function book(name){
+  this.name = name;
+
+}
+
+function add(){
+  var obj_key = 'obj_key_' + localStorage.length; //for uniqueness
+
+console.log(obj_key);
+
+
+
+localStorage.setItem(obj_key, JSON.stringify(new book(document.book_form.bookName.value)));
+console.log(document.book_form.bookName.value);
+
+window.location.reload(); //relaods form to clear input field
+}
+
+
+
+function clear_storage(){
+  localStorage.clear();
+ }
+
+
+function fromStorage(){
+for(i=0;i< localStorage.length;i++){
+  var x = JSON.parse(localStorage.getItem("obj_key_" + i));
+  alert(x.name);
+  }
+ }-->
+      </pre>  
+    </div>
+
+

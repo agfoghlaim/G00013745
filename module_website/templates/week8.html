@@ -1,0 +1,218 @@
+ <div class="row">
+      <h3>Week 8</h3>
+      <p>This week there were 6 exercises in jQuery.</p>
+     
+  </div>
+
+  <div class="row">
+            <h1>jQuery Basic Example</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week8/w8l14/basic-example.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>bacic-example.js</h4>
+      <div>
+      <pre>
+/*select all the headings and add the class headline to it.
+The headline class has properties defined for it in css */
+$(':header').addClass('headline');
+
+///////////////
+
+$('li:lt(2)').hide().fadeOut(500).fadeIn(1500).fadeOut(1500).fadeIn(1500);
+
+//////////////
+
+/*select the first 3 list items, hide them, and then fade them into view
+Note, elements are selected, then two methods are invoked - hide, followed
+by fadeIn. This is known as chaining. Results in far more compact code. */
+//$('li:lt(3)').hide().fadeIn(1500);
+
+/*add an event listener to each of the li elements.
+The event is invoked when a listitem is clicked on.
+An anonymous function is invoked to remove the list item*/
+$('li').on('click', function() {
+  $(this).remove();
+});
+      </pre>  
+    </div>
+
+
+  <div class="row">
+            <h1>jQuery Looping</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week8/w8l15/looping.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>looping.js</h4>
+      <div>
+      <pre>
+$(function(){
+ 
+ 
+  $('li.hot').addClass('favorite');
+  $('em').addClass('seasonal');
+
+
+
+});
+
+
+      </pre>  
+    </div>
+
+  <div class="row">
+            <h1>jQuery document(ready)</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week8/w8l16/ready.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>targetDiv.js</h4>
+      <div>
+      <pre>
+$(function(){
+ 
+ 
+  $('li.hot').addClass('favorite');
+  $('em').addClass('seasonal');
+
+
+
+});
+
+
+      </pre>  
+    </div>
+
+
+
+  <div class="row">
+            <h1>jQuery Credit Card Validator</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week8/w8l17/confirmed.html"></iframe>
+             <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week8/w8l17/index.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>validation.js</h4>
+      <div>
+      <pre>
+
+$(function(){
+  $isValid = false;
+
+  $('#validation').validateCreditCard(function(result){
+  result.valid ? $isValid=true : $isValid=false;
+  });
+
+  $('.confirm').on('click', function(){
+  $isValid ? $(window).attr("location", "confirmed.html") :
+  alert("not valid cc");
+  });
+
+
+
+
+});
+
+      </pre>  
+    </div>
+
+ <div class="row">
+            <h1>AJAX and xml data with jQuery</h1>
+            <h3>Result</h3>
+           
+             <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week8/w8l18/data-xml.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>data-xml.js</h4>
+      <div>
+      <pre>
+
+$(document).ready(function() {  
+  var $newContent="";
+  
+  $.ajax({
+    type: "GET",
+    url: "data/data.xml",
+    dataType: "xml",
+    success: function(xml) {
+      
+      $(xml).find('event').each(function(){
+        
+        $newContent += '< div class="event">';
+        $newContent += '< img src="' + $(this).find('map').text() + '" ';
+        $newContent += 'alt="' + $(this).find('location').text() + '" />';
+        $newContent += '< p>< b>' + $(this).find('location').text() + '</ b>< br>';
+        $newContent += $(this).find('date').text() + '</ p>';
+        $newContent += '</ div>';
+      })
+      $("#content").html($newContent);
+    },
+    error: function() {
+      alert("The XML File could not be accessed.");
+    } 
+  });
+
+});
+
+
+
+      </pre>  
+    </div>
+
+
+ <div class="row">
+            <h1>JSONP with jQuery</h1>
+            <h3>Result</h3>
+           
+             <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week8/w8l19/data-jsonp.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>validation.js</h4>
+      <div>
+      <pre>
+$(document).ready(function() {  
+  
+  $.ajax({
+    url: "http://htmlandcssbook.com/js/jsonp.js",
+    dataType: "jsonp",
+    jsonp: false, //set to false if you don't want to include callback=? in url string
+    jsonpCallback: "showEvents", //this property is required only if jsonp property is set to false.
+    success: function showEvents(data) {
+      var $newContent = '';
+      $.each( data.events, function($i) {
+        $newContent += '< div class="event">';
+        $newContent += '< img src="' + data.events[$i].map + '" ';
+        $newContent += 'alt="' + data.events[$i].location + '" />';
+        $newContent += '< p>< b>' + data.events[$i].location + '</ b>< br >';
+        $newContent += data.events[$i].date + '</ p>';
+        $newContent += '</ div>';
+      });
+      $('#content').html($newContent);  
+    },
+    error: function() {
+      alert("The JSONP data request could not be processed.");
+    }
+  });
+
+});
+
+
+
+

@@ -1,0 +1,245 @@
+<div class="container">
+    <div class="row">
+     
+        <h3>Week 4</h3>
+        <p>This week we covered exception handling in the lecture.</p>
+        <p>We also completed 5 labs on event flow and attributes.</p>
+    </div>
+
+    <div class="row">
+      <h1>Exception handling</h1>
+            <h3>Result</h3>
+            
+            
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>exception_lab.js</h4>
+      <div>
+      <pre>
+         console.log('And we\'re off');
+          try{
+          someVar; // variable is not declared. Will cause an exception
+
+          }catch(e){
+            var x = document.getElementById("error_details");
+            x.textContent = "ReferenceError: someVar is not defined " + e.description;
+          }finally{
+            alert("finally block");
+          }
+
+      </pre>  
+    </div> 
+
+
+    <div class="row">
+      <h1>Event Attributes</h1>
+            <h3>Result</h3>
+            
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l6/event-attributes/registered.html"></iframe>
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l6/event-attributes/event-attributes.html"></iframe>
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>event-attributes.js</h4>
+      <div>
+      <pre>
+function checkUsername(){
+  var x = document.getElementById("username").value;
+  var y = document.getElementById("feedback");
+      if(x.length < 4){
+y.textContent = "warning user name must be more than 5 characters.";
+      }
+    
+}
+      </pre>  
+    </div>
+
+
+    <div class="row">
+      <h1>Event Handler</h1>
+            <h3>Result</h3>
+            
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l6/event-handler/registered.html"></iframe>
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l6/event-handler/event-handler.html"></iframe>
+    </div>
+
+     <div class="row">
+      <h3>Code</h3>
+      <h4>event-handler.js</h4>
+      <div>
+      <pre>
+var el = document.getElementById("username");
+el.onblur = checkUsername;
+
+function checkUsername(){
+ 
+   var y = el.value;
+   var feedback = document.getElementById("feedback");
+      if(y.length < 4){
+  feedback.textContent = "warning must be greater than 5";
+      }
+ }
+      </pre>  
+    </div> 
+
+
+     <div class="row">
+      <h1>Event Listner</h1>
+            <h3>Result</h3>
+            
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l6/event-listener/registered.html"></iframe>
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l6/event-listener/event-listener.html"></iframe>
+    </div>
+
+
+     <div class="row">
+      <h3>Code</h3>
+      <h4>event-listener.js</h4>
+      <div>
+      <pre>
+function checkUsername(){
+ var username = document.getElementById("username");
+   var y = username.value;
+   
+      if(y.length < 4){
+ var feedback = document.getElementById("feedback");
+ feedback.textContent = "warning must be greater than 5";
+
+      }
+ }
+
+
+
+
+
+var el = document.getElementById("username");
+el.addEventListener('blur', function(){
+  checkUsername();
+}, false);
+
+el.addEventListener('focus', function(){
+  removeWarning();
+}, false);
+
+function removeWarning(){
+var feedback = document.getElementById("feedback");
+ feedback.textContent = ""; 
+}
+
+      </pre>  
+    </div> 
+
+ <div class="row">
+  <h1>Event Capturing</h1>
+    <h3>Result</h3>
+    
+    <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l7/event-flow-capture/event-flow-capture.html"></iframe>
+  </div>
+
+       <div class="row">
+      <h3>Code</h3>
+      <h4>event-flow-capture.js</h4>
+      <div>
+      <pre>
+/* Capture: Add event listeners for parent nodes, starting at div  tag all the way down to a tag */
+
+/* Use an anonymous function so that a parameter can be passed to it - a string parameter.*/
+
+/* the string passed should indicate the element name - e.g. if event listener on div node
+then the string passed should be "<div>". The function should then present this parameter in
+an alert message */
+
+function showElement(str){
+  alert(str);
+
+}
+var el = document.getElementById("page");
+el.addEventListener('click', function(){
+  showElement("<div>");
+  
+}, true);
+
+var el = document.getElementById('list');
+el.addEventListener('click', function(){
+  showElement("<ul>");
+  
+}, true);
+
+var el = document.getElementById("item");
+el.addEventListener('click', function(){
+  showElement("<li>");
+  
+
+},true);
+
+var el = document.getElementById('link');
+el.addEventListener('click', function(){
+  showElement( a tag);
+
+
+}, true);
+/////////////
+var list = document.getElementById("page");
+
+function hide(e) {
+  // Unless list items are separated by a margin, e.target should be different than e.currentTarget
+  e.currentTarget.style.border = 'green';
+}
+
+list.addEventListener('click', hide, false);
+
+ </pre>  
+    </div> 
+
+ <div class="row">
+    <h1>Event Bubbling</h1>
+    <h3>Result</h3>
+    <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week4/w4l7/event-flow-capture/event-flow-capture.html"></iframe>
+  </div>
+
+
+         <div class="row">
+      <h3>Code</h3>
+      <h4>event-flow-bubble.js</h4>
+      <div>
+      <pre>
+function showElement() {
+  alert(this.innerHTML);
+}
+
+el = document.getElementById("link");
+el.addEventListener('click', showElement, false);
+
+el = document.getElementById("item");   
+el.addEventListener('click', showElement, false);
+
+/* Bubble: Add event listeners for parent nodes of 
+"< a>" all the way up to < div> */
+
+el = document.getElementById("list");   
+el.addEventListener('click', showElement, false);
+
+el = document.getElementById("page");   
+el.addEventListener('click', showElement, false);
+
+ </pre>  
+    </div> 
+
+
+
+
+
+
+          
+
+         
+                 
+
+
+     
+</div><!--end of container -->
+
+
+
+

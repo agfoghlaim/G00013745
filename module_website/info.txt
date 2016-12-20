@@ -1,0 +1,55 @@
+Installation Instructions and Information
+
+=========
+database
+==========
+
+
+database name: saucepan_city
+
+The database, saucepan_city has two tables;
+
+Table 1: `orders` has the following columns - order_id(pk), user_id, product, cost(not used), cust_confirm.
+
+Table 2: `users` has the following columns -   `user_id`(pk),`firstname`,`lastname`, `username`, `password, `street`, `town`, `county`, `country`
+
+The saucepan_city.sql script to create the database can be found in module_website/assets/labs/project
+
+The .sql script includes sample data, username Tom Hanks with encrypted password 'big' who has placed one order on the site.
+
+The database access file is located in project/core/mysqli_connect.php
+
+
+===================
+core requirements
+===================
+
+1. Login and Register - found in login.php and register.php.
+2. Upon logging in, user is taken to shop.php. 
+3. Here they can add products to cart and use cart icon in the navigation bar to navigate to cart.php. The code behind shop.php can be found in js/angular.js.
+4. cart.php contains a dynamically created table which includes product details (as retrieved from local storage), product total and cart total. See js/listen.js.
+5. cart.php consists of an event listener on the <div> which contains the dynamic table. See js/listen.js line 58.
+6. clicking on an item in the cart table decreases the 'amount in cart' by one if there is more than one of that item in the cart. (see js/listen.js line 32)
+   Otherwise, the row is deleted.
+   When there are no items in the cart, the table disappears and is replaced with another 'back to shop' option. See js/listen.js.
+7. cart.php also contains a 'back to shop' and 'proceed to checkout' link. Here the user is asked to enter their address before payment confirmation. The address is added to the users table in the database in address.php. 
+8. after user confirms shipping address, they are brought to checkout.php which contains a form for credit card validation. See js/validation.js.
+9. The 'confirm' button in checkout.php calls a function in js/validation.js which validates the card. If card is validated, order details are sent to pretend.php
+	where a unique customer confirmation number is created and the order and user_id of the logged-in user is inserted into the orders table in the database. 
+	A confirmation message containing the confirmation number and the product details are then displayed on the checkout page.
+
+
+===================
+Other Information
+===================
+THe logout button in the nav-bar links to end-session.php can be found in js/jq.js which clears local storage and links to logged out with option to log out, session destroyed.
+
+
+
+
+===================
+Install Instructions
+===================
+
+download files to xampp/htdocs (or equivilent)
+use phpMyAdmin to create new database named saucepan_city and import script located at module_website/assets/labs/project/saucepan_city.sql.

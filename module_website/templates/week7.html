@@ -1,0 +1,147 @@
+  <div class="row">
+      <h3>Week 7</h3>
+      <p>There were 4 exercises, 3 in AJAX an one on JSONP</p>
+     
+  </div>
+
+  <div class="row">
+            <h1>AJAX and html</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week7/w7l10/data-html.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>data-html.js</h4>
+      <div>
+      <pre>
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'data/data.html', true);
+xhr.send(null); //we're not passing any paramaters eg search paramater
+xhr.onload = function(){
+  var el = document.getElementById('content');
+  el.innerHTML = xhr.responseText;
+}
+
+      </pre>  
+    </div>
+  <div class="row">
+            <h1>AJAX and json</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week7/w7l11/data-json.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>data-json.js</h4>
+      <div>
+      <pre>
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'data/data.json', true);
+xhr.send(null);
+
+xhr.onload = function(){
+  var ResponseObject = JSON.parse(xhr.responseText);
+  var content = "";
+  for(i=0;i<  ResponseObject.events.length; i++){
+    content += '< div class="event">';
+    content += '< img src="' +ResponseObject.events[i].map +' " ';
+    content += 'alt= "' + ResponseObject.events[i].location + '" />'
+    content += '< p>< b>' + ResponseObject.events[i].location + '</ b>< br >';
+    content += ResponseObject.events[i].date + '</ p></ div>';
+    console.log(content);
+
+
+  }
+      var section = document.getElementById('content');
+section.innerHTML = content;
+}
+
+
+      </pre>  
+    </div>
+
+  <div class="row">
+            <h1>AJAX and xml</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week7/w7l12/data-xml.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>data-xml.js</h4>
+      <div>
+      <pre>
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'data/data.xml',true);
+xhr.send(null);
+
+
+xhr.onload = function(){
+  var response = xhr.responseXML;
+  var events = response.getElementsByTagName('event');
+
+  var di1='map';
+  var di2='location';
+  var di3='date';
+
+  //build up string with new content
+
+  var newContent = '';
+  for(i=0;i< events.length;i++){
+  newContent +=  '< div> \
+            < img src= ' + '"' + events[i].getElementsByTagName(di1)[0].firstChild.nodeValue + '"' + '/> \
+              <p><b>' + events[i].getElementsByTagName(di2)[0].firstChild.nodeValue + '</ b> \
+              </ p> \
+           </ div>'; 
+  }
+
+  //update pg with content
+  document.getElementById('content').innerHTML = newContent;
+}
+
+
+
+      </pre>  
+    </div>
+
+  <div class="row">
+            <h1>JSON with Padding</h1>
+            <h3>Result</h3>
+           
+            <iframe style="width:100%; height:100%;margin:0px;border:1px solid #8d1236;" src="assets/labs/week7/w7l13/data-jsonp.html"></iframe>
+           
+    </div>
+    <div class="row">
+      <h3>Code</h3>
+      <h4>data-jsonp.js</h4>
+      <div>
+      <pre>
+function showEvents(data){
+  var newContent = '';
+
+
+//build string with teh new content(could use dom manipulation see ajax lab 3)
+
+for(i=0;i<  data.events.length; i++){
+  newContent += '< div class="event">';
+  newContent +='< img src="' + data.events[i].map + '" ';
+  newContent += 'alt="' + data.events[i].location + '" />';
+  newContent += '<p><b>' + data.events[i].location + '</ b>< br>';
+  newContent += data.events[i].date + '</ p>';
+  newContent += '</ div>';
+}
+
+//update the page with new content
+document.getElementById('content').innerHTML = newContent;
+
+}
+
+
+
+
+      </pre>  
+    </div>
